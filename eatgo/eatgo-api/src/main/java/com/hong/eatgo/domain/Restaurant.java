@@ -4,10 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
-    private final Long id;
-    private final String name;
-    private final String address;
+    private Long id;
+    private String name;
+    private String address;
     private List<MenuItem> menuItems = new ArrayList<MenuItem>();
+
+    public Restaurant() {
+        // ResponseBody를 json에서 불러오려면 default 생성자가 필요.
+    }
+
+    public Restaurant(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
 
     public Restaurant(Long id, String name, String address) {
         this.id = id;
@@ -23,11 +32,15 @@ public class Restaurant {
         return id;
     }
 
-    public Object getAddress() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
         return address;
     }
 
-    public Object getInformation() {
+    public String getInformation() {
         return name + " in " + address;
     }
 
@@ -44,4 +57,5 @@ public class Restaurant {
             addMenuItem(menuItem);
         }
     }
+
 }

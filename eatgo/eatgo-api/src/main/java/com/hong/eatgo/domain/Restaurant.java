@@ -1,5 +1,6 @@
 package com.hong.eatgo.domain;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -32,6 +33,10 @@ public class Restaurant {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<MenuItem> menuItems;
 
+    @Transient
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Review> reviews;
+
     public String getInformation() {
         return name + " in " + address;
     }
@@ -43,5 +48,9 @@ public class Restaurant {
     public void updateInformation(String name, String address) {
         this.name = name;
         this.address = address;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = new ArrayList<>(reviews);
     }
 }

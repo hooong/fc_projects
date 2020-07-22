@@ -6,13 +6,16 @@
       <GradleProjectSettings>
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="PLATFORM" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/eatgo" />
         <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/eatgo" />
-            <option value="$PROJECT_DIR$/eatgo/eatgo-api" />
+            <option value="$PROJECT_DIR$/eatgo/eatgo-admin-api" />
+            <option value="$PROJECT_DIR$/eatgo/eatgo-common" />
+            <option value="$PROJECT_DIR$/eatgo/eatgo-customer-api" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

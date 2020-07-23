@@ -37,10 +37,6 @@ dependencies {
 	testCompile 'junit:junit:4.12'
 }
 
-project(':eatgo-common') {
-
-}
-
 test {
 	useJUnitPlatform()
 }

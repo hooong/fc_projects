@@ -2,10 +2,10 @@ package com.hong.eatgo.application;
 
 import com.hong.eatgo.domain.MenuItem;
 import com.hong.eatgo.domain.MenuItemRepository;
-import com.hong.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,5 +31,9 @@ public class MenuItemService {
         }
         menuItem.setRestaurantId(id);
         menuItemRepository.save(menuItem);
+    }
+
+    public List<MenuItem> getMenuItems(Long restaurantId) {
+        return menuItemRepository.findAllByRestaurantId(restaurantId);
     }
 }

@@ -1,6 +1,7 @@
 package com.hong.eatgo.application;
 
 import com.hong.eatgo.domain.Category;
+import com.hong.eatgo.domain.Region;
 import com.hong.eatgo.domain.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +18,12 @@ public class RegionService {
         this.regionRepository = regionRepository;
     }
 
-    public List<Category> getRegions() {
+    public List<Region> getRegions() {
         return regionRepository.findAll();
     }
 
-    public Category addRegion(String name) {
-        Category region = Category.builder().name(name).build();
+    public Region addRegion(String name) {
+        Region region = Region.builder().name(name).build();
 
         regionRepository.save(region);
 

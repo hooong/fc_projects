@@ -2,6 +2,7 @@ package com.hong.eatgo.interfaces;
 
 import com.hong.eatgo.application.RegionService;
 import com.hong.eatgo.domain.Category;
+import com.hong.eatgo.domain.Region;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class RegionControllerTest {
 
     @Test
     public void list() throws Exception {
-        List<Category> mockregions = new ArrayList<>();
-        mockregions.add(Category.builder().name("Seoul").build());
+        List<Region> mockregions = new ArrayList<>();
+        mockregions.add(Region.builder().name("Seoul").build());
 
         given(regionService.getRegions()).willReturn(mockregions);
 
@@ -46,7 +47,7 @@ public class RegionControllerTest {
 
     @Test
     public void create() throws Exception {
-        Category region = Category.builder().name("Seoul").build();
+        Region region = Region.builder().name("Seoul").build();
         given(regionService.addRegion("Seoul")).willReturn(region);
 
         mvc.perform(post("/regions")

@@ -1,6 +1,7 @@
 package com.hong.eatgo.application;
 
 import com.hong.eatgo.domain.Category;
+import com.hong.eatgo.domain.Region;
 import com.hong.eatgo.domain.RegionRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,13 +33,13 @@ public class RegionServiceTest {
 
     @Test
     public void getRegions(){
-        List<Category> mockregions = new ArrayList<>();
-        mockregions.add(Category.builder().name("Seoul").build());
+        List<Region> mockregions = new ArrayList<>();
+        mockregions.add(Region.builder().name("Seoul").build());
 
         given(regionRepository.findAll()).willReturn(mockregions);
 
-        List<Category> regions = regionService.getRegions();
-        Category region = regions.get(0);
+        List<Region> regions = regionService.getRegions();
+        Region region = regions.get(0);
         assertThat(region.getName(), is("Seoul"));
     }
 

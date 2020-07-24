@@ -61,11 +61,14 @@ public class RestaurantServiceTest {
         List<Restaurant> restaurants = new ArrayList<>();
         Restaurant restaurant = Restaurant.builder()
                                     .id(1004L)
+                                    .categoryId(1L)
                                     .address("Seoul")
                                     .name("Bob zip")
                                     .build();
         restaurants.add(restaurant);
-        given(restaurantRepository.findAll()).willReturn(restaurants);
+        given(restaurantRepository.findAllByAddressContainingAndCategoryId(
+                "Seoul", 1L))
+                .willReturn(restaurants);
         given(restaurantRepository.findById(1004L)).willReturn(Optional.of(restaurant));
     }
 
@@ -102,46 +105,12 @@ public class RestaurantServiceTest {
 
     @Test
     public void getRestaurants() {
-        List<Restaurant> restaurants = restaurantService.getRestaurants();
+        String region = "Seoul";
+        Long categoryId = 1L;
+        List<Restaurant> restaurants = restaurantService.getRestaurants(region, categoryId);
 
         Restaurant restaurant = restaurants.get(0);
         assertThat(restaurant.getId(), is(1004L));
-    }
-
-    @Test
-    public void addRestaurant(){
-        given(restaurantRepository.save(any())).will(invocation -> {
-            Restaurant restaurant = invocation.getArgument(0);
-            restaurant.setId(1234L);
-            return restaurant;
-        });
-
-        Restaurant restaurant = Restaurant.builder()
-                .name("BeRyong")
-                .address("Busan")
-                .build();
-
-        Restaurant created = restaurantService.addRestaurant(restaurant);
-
-        assertThat(created.getId(), is(1234L));
-    }
-
-    @Test
-    public void updateRestaurant() {
-
-        Restaurant restaurant = Restaurant.builder()
-                .id(1004L)
-                .name("Bob zip")
-                .address("Seoul")
-                .build();
-
-        given(restaurantRepository.findById(1004L))
-                .willReturn(Optional.of(restaurant));
-
-        restaurantService.updateRestaurant(1004L, "Sool zip", "Busan");
-
-        assertThat(restaurant.getName(), is("Sool zip"));
-        assertThat(restaurant.getAddress(), is("Busan"));
     }
 
 }

@@ -2,6 +2,7 @@ package com.hong.eatgo.interfaces;
 
 import com.hong.eatgo.application.RegionService;
 import com.hong.eatgo.domain.Category;
+import com.hong.eatgo.domain.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,8 @@ public class RegionController {
     private RegionService regionService;
 
     @GetMapping("/regions")
-    public List<Category> list() {
-        List<Category> regions = regionService.getRegions();
+    public List<Region> list() {
+        List<Region> regions = regionService.getRegions();
         
 
         return regions;
@@ -33,7 +34,7 @@ public class RegionController {
     ) throws URISyntaxException {
         String name = resource.getName();
 
-        Category region = regionService.addRegion(name);
+        Region region = regionService.addRegion(name);
 
         String url = "/regions/" + region.getId();
         return ResponseEntity.created(new URI(url)).body("{}");

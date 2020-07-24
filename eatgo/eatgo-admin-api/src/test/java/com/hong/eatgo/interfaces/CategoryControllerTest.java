@@ -1,5 +1,6 @@
 package com.hong.eatgo.interfaces;
 
+import com.hong.eatgo.application.CategoryService;
 import com.hong.eatgo.application.RegionService;
 import com.hong.eatgo.domain.Category;
 import org.junit.Test;
@@ -23,38 +24,38 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(RegionController.class)
-public class RegionControllerTest {
+@WebMvcTest(CategoryController.class)
+public class CategoryControllerTest {
 
     @Autowired
     MockMvc mvc;
 
     @MockBean
-    private RegionService regionService;
+    private CategoryService categoryService;
 
     @Test
     public void list() throws Exception {
-        List<Category> mockregions = new ArrayList<>();
-        mockregions.add(Category.builder().name("Seoul").build());
+        List<Category> mockcategoies = new ArrayList<>();
+        mockcategoies.add(Category.builder().name("Korean Food").build());
 
-        given(regionService.getRegions()).willReturn(mockregions);
+        given(categoryService.getCategories()).willReturn(mockcategoies);
 
-        mvc.perform(get("/regions"))
+        mvc.perform(get("/categories"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Seoul")));
+                .andExpect(content().string(containsString("Korean Food")));
     }
 
     @Test
     public void create() throws Exception {
-        Category region = Category.builder().name("Seoul").build();
-        given(regionService.addRegion("Seoul")).willReturn(region);
+        Category category = Category.builder().name("Korean Food").build();
+        given(categoryService.addCategory("Korean Food")).willReturn(category);
 
-        mvc.perform(post("/regions")
-        .content("{\"name\":\"Seoul\"}")
-        .contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(post("/categories")
+                .content("{\"name\":\"Korean Food\"}")
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(content().string("{}"));
 
-        verify(regionService).addRegion("Seoul");
+        verify(categoryService).addCategory("Korean Food");
     }
 }

@@ -1,13 +1,12 @@
 package com.hong.eatgo.interfaces;
 
 import com.hong.eatgo.application.RegionService;
-import com.hong.eatgo.domain.Region;
+import com.hong.eatgo.domain.Category;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -34,8 +33,8 @@ public class RegionControllerTest {
 
     @Test
     public void list() throws Exception {
-        List<Region> mockregions = new ArrayList<>();
-        mockregions.add(Region.builder().name("Seoul").build());
+        List<Category> mockregions = new ArrayList<>();
+        mockregions.add(Category.builder().name("Seoul").build());
 
         given(regionService.getRegions()).willReturn(mockregions);
 

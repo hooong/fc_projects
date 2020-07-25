@@ -64,6 +64,7 @@ public class UserServiceTest {
 
     @Test
     public void updateUser() {
+        // TODO
         Long id = 1004L;
         String email = "admin@example.com";
         String name = "Superman";

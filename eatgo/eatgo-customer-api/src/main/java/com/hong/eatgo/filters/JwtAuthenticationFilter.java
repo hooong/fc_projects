@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// 필터를 상속받아서 재정의 할 수 있음
 public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
     private JwtUtil jwtUtil;
@@ -48,6 +49,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
         Claims claims = jwtUtil.getClaims(token.substring("Bearer ".length()));
 
+        // 유저정보 담는 것
         Authentication authentication =
                 new UsernamePasswordAuthenticationToken(claims, null);
 

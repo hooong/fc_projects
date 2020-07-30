@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/eatgo/eatgo-admin-api" />
             <option value="$PROJECT_DIR$/eatgo/eatgo-common" />
             <option value="$PROJECT_DIR$/eatgo/eatgo-customer-api" />
+            <option value="$PROJECT_DIR$/eatgo/eatgo-login-api" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

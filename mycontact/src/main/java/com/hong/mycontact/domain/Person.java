@@ -1,10 +1,19 @@
 package com.hong.mycontact.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
+import java.util.Locale;
 
 @Entity
+@Getter
+@Setter
+@ToString(exclude = "age")
 public class Person {
 
     @Id
@@ -15,28 +24,17 @@ public class Person {
 
     private int age;
 
-    public String getName() {
-        return name;
-    }
+    private String hobby;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String bloodType;
 
-    public int getAge() {
-        return age;
-    }
+    private String address;
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    private LocalDate birthday;
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
+    private String job;
+
+    @ToString.Exclude
+    private String phoneNumber;
+
 }

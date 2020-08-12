@@ -1,23 +1,20 @@
 package com.hong.mycontact.domain;
 
+import com.hong.mycontact.domain.dto.Birthday;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Locale;
+import javax.validation.Valid;
 
 @Entity
-@Getter
-@Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-@EqualsAndHashCode
+@Data
 public class Person {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
@@ -33,7 +30,9 @@ public class Person {
 
     private String address;
 
-    private LocalDate birthday;
+    @Embedded
+    @Valid
+    private Birthday birthday;
 
     private String job;
 

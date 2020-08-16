@@ -25,7 +25,6 @@ class PersonRepositoryTest {
     void crud() {
         Person person = new Person();
         person.setName("john");
-        person.setAge(25);
         person.setBloodType("A");
 
         personRepository.save(person);
@@ -34,7 +33,7 @@ class PersonRepositoryTest {
 
         assertThat(result.size()).isEqualTo(1);
         assertThat(result.get(0).getName()).isEqualTo("john");
-        assertThat(result.get(0).getAge()).isEqualTo(25);
+        assertThat(result.get(0).getAge()).isEqualTo("30");
         assertThat(result.get(0).getBloodType()).isEqualTo("A");
     }
 
@@ -57,12 +56,12 @@ class PersonRepositoryTest {
     }
 
     private void givenPerson(String name, int age, String bloodType) {
-        personRepository.save(new Person(name,age,bloodType));
+        personRepository.save(new Person(name,bloodType));
     }
 
     private void givenPerson(String name, int age, String bloodType, LocalDate birthday) {
-        Person person = new Person(name, age, bloodType);
-        person.setBirthday(new Birthday(birthday));
+        Person person = new Person(name, bloodType);
+        person.setBirthday(Birthday.of(birthday));
 
         personRepository.save(person);
 
